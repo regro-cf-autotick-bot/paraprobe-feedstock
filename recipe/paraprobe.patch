@@ -153,7 +153,7 @@ diff --git a/code/paraprobe-autoreporter/src/python/wizard/thirdparty/mandatory/
 new file mode 100644
 index 0000000..e69de29
 diff --git a/code/paraprobe-distancer/CMakeLists.txt b/code/paraprobe-distancer/CMakeLists.txt
-index 7348ab5..b794851 100755
+index 7348ab5..4e54a90 100755
 --- a/code/paraprobe-distancer/CMakeLists.txt
 +++ b/code/paraprobe-distancer/CMakeLists.txt
 @@ -1,36 +1,17 @@
@@ -201,7 +201,7 @@ index 7348ab5..b794851 100755
  
 +find_package(HDF5 REQUIRED)
 +include_directories(${HDF5_INCLUDE_DIRS})
-+set(MYHDFLINKFLAGS "-L${CONDA_PREFIX}/lib/ ${CONDA_PREFIX}/lib/libhdf5_hl.so ${CONDA_PREFIX}/lib/libhdf5.so ${CONDA_PREFIX}/lib/libz.so ${CONDA_PREFIX}/lib/libsz.so ${CONDA_PREFIX}/lib/libaec.so -ldl")
++set(MYHDFLINKFLAGS "-L${CONDA_PREFIX}/lib/ ${CONDA_PREFIX}/lib/libhdf5_hl.so ${CONDA_PREFIX}/lib/libhdf5.so ${CONDA_PREFIX}/lib/libz.so.1 ${CONDA_PREFIX}/lib/libsz.so ${CONDA_PREFIX}/lib/libaec.so -ldl")
  
 -################################################################################################################################
 -##END OF INTERACTION FOR NON PRO USERS##########################################################################################
@@ -344,7 +344,7 @@ index 7348ab5..b794851 100755
  	${MYTOOLSRCPATH}/CONFIG_Distancer.cpp
  	${MYTOOLSRCPATH}/PARAPROBE_DistancerStructs.cpp
 diff --git a/code/paraprobe-intersector/CMakeLists.txt b/code/paraprobe-intersector/CMakeLists.txt
-index 58342a7..03b7cfb 100644
+index 58342a7..93708a1 100644
 --- a/code/paraprobe-intersector/CMakeLists.txt
 +++ b/code/paraprobe-intersector/CMakeLists.txt
 @@ -1,40 +1,17 @@
@@ -427,7 +427,7 @@ index 58342a7..03b7cfb 100644
 -endif()
 +find_package(HDF5 REQUIRED)
 +include_directories(${HDF5_INCLUDE_DIRS})
-+set(MYHDFLINKFLAGS "-L${CONDA_PREFIX}/lib/ ${CONDA_PREFIX}/lib/libhdf5_hl.so ${CONDA_PREFIX}/lib/libhdf5.so ${CONDA_PREFIX}/lib/libz.so ${CONDA_PREFIX}/lib/libsz.so ${CONDA_PREFIX}/lib/libaec.so -ldl")
++set(MYHDFLINKFLAGS "-L${CONDA_PREFIX}/lib/ ${CONDA_PREFIX}/lib/libhdf5_hl.so ${CONDA_PREFIX}/lib/libhdf5.so ${CONDA_PREFIX}/lib/libz.so.1 ${CONDA_PREFIX}/lib/libsz.so ${CONDA_PREFIX}/lib/libaec.so -ldl")
 +
 +find_package(Boost REQUIRED)
 +include_directories(${Boost_INCLUDE_DIRS})
@@ -578,7 +578,7 @@ index 58342a7..03b7cfb 100644
  #target_link_libraries( ${MYPROJECTNAME} -lgomp -lpthread ${MPI_LIBRARIES} ${MYTETGENLINKFLAGS} ${MYHDFLINKFLAGS} -lm ${Boost_LIBRARIES} )
  
 diff --git a/code/paraprobe-nanochem/CMakeLists.txt b/code/paraprobe-nanochem/CMakeLists.txt
-index ffd3e41..eaac2f8 100644
+index ffd3e41..73ce1cc 100644
 --- a/code/paraprobe-nanochem/CMakeLists.txt
 +++ b/code/paraprobe-nanochem/CMakeLists.txt
 @@ -1,152 +1,91 @@
@@ -672,7 +672,7 @@ index ffd3e41..eaac2f8 100644
 -endif()
 +find_package(HDF5 REQUIRED)
 +include_directories(${HDF5_INCLUDE_DIRS})
-+set(MYHDFLINKFLAGS "-L${CONDA_PREFIX}/lib/ ${CONDA_PREFIX}/lib/libhdf5_hl.so ${CONDA_PREFIX}/lib/libhdf5.so ${CONDA_PREFIX}/lib/libz.so ${CONDA_PREFIX}/lib/libsz.so ${CONDA_PREFIX}/lib/libaec.so -ldl")
++set(MYHDFLINKFLAGS "-L${CONDA_PREFIX}/lib/ ${CONDA_PREFIX}/lib/libhdf5_hl.so ${CONDA_PREFIX}/lib/libhdf5.so ${CONDA_PREFIX}/lib/libz.so.1 ${CONDA_PREFIX}/lib/libsz.so ${CONDA_PREFIX}/lib/libaec.so -ldl")
  
 -link_directories(${Boost_LIBRARY_DIR})
 -find_package(Boost)
@@ -1319,7 +1319,7 @@ index 49154a5..180380c 100755
  
  #MPI compilation settings
 diff --git a/code/paraprobe-spatstat/CMakeLists.txt b/code/paraprobe-spatstat/CMakeLists.txt
-index 03f4ac7..221283f 100644
+index 03f4ac7..1f4832b 100644
 --- a/code/paraprobe-spatstat/CMakeLists.txt
 +++ b/code/paraprobe-spatstat/CMakeLists.txt
 @@ -1,38 +1,17 @@
@@ -1404,7 +1404,7 @@ index 03f4ac7..221283f 100644
 -find_package(Boost)
 +find_package(HDF5 REQUIRED)
 +include_directories(${HDF5_INCLUDE_DIRS})
-+set(MYHDFLINKFLAGS "-L${CONDA_PREFIX}/lib/ ${CONDA_PREFIX}/lib/libhdf5_hl.so ${CONDA_PREFIX}/lib/libhdf5.so ${CONDA_PREFIX}/lib/libz.so ${CONDA_PREFIX}/lib/libsz.so ${CONDA_PREFIX}/lib/libaec.so -ldl")
++set(MYHDFLINKFLAGS "-L${CONDA_PREFIX}/lib/ ${CONDA_PREFIX}/lib/libhdf5_hl.so ${CONDA_PREFIX}/lib/libhdf5.so ${CONDA_PREFIX}/lib/libz.so.1 ${CONDA_PREFIX}/lib/libsz.so ${CONDA_PREFIX}/lib/libaec.so -ldl")
 +
 +find_package(Boost REQUIRED)
 +include_directories(${Boost_INCLUDE_DIRS})
@@ -1510,7 +1510,7 @@ index 03f4ac7..221283f 100644
  	${MYTOOLSRCPATH}/PARAPROBE_SpatstatIonHandling.cpp
  	${MYTOOLSRCPATH}/CONFIG_Spatstat.cpp
 diff --git a/code/paraprobe-surfacer/CMakeLists.txt b/code/paraprobe-surfacer/CMakeLists.txt
-index 5122000..f649c78 100755
+index 5122000..76e4529 100755
 --- a/code/paraprobe-surfacer/CMakeLists.txt
 +++ b/code/paraprobe-surfacer/CMakeLists.txt
 @@ -1,39 +1,18 @@
@@ -1592,7 +1592,7 @@ index 5122000..f649c78 100755
 -endif()
 +find_package(HDF5 REQUIRED)
 +include_directories(${HDF5_INCLUDE_DIRS})
-+set(MYHDFLINKFLAGS "-L${CONDA_PREFIX}/lib/ ${CONDA_PREFIX}/lib/libhdf5_hl.so ${CONDA_PREFIX}/lib/libhdf5.so ${CONDA_PREFIX}/lib/libz.so ${CONDA_PREFIX}/lib/libsz.so ${CONDA_PREFIX}/lib/libaec.so -ldl")
++set(MYHDFLINKFLAGS "-L${CONDA_PREFIX}/lib/ ${CONDA_PREFIX}/lib/libhdf5_hl.so ${CONDA_PREFIX}/lib/libhdf5.so ${CONDA_PREFIX}/lib/libz.so.1 ${CONDA_PREFIX}/lib/libsz.so ${CONDA_PREFIX}/lib/libaec.so -ldl")
 +
 +find_package(Boost REQUIRED)
 +include_directories(${Boost_INCLUDE_DIRS})
@@ -1714,7 +1714,7 @@ index 5122000..f649c78 100755
  if(MPI_COMPILE_FLAGS)
  	set_target_properties(${MYPROJECTNAME} PROPERTIES COMPILE_FLAGS "${MPI_COMPILE_FLAGS}")
 diff --git a/code/paraprobe-tessellator/CMakeLists.txt b/code/paraprobe-tessellator/CMakeLists.txt
-index 78a0cbd..72d3b31 100755
+index 78a0cbd..7273fa7 100755
 --- a/code/paraprobe-tessellator/CMakeLists.txt
 +++ b/code/paraprobe-tessellator/CMakeLists.txt
 @@ -1,36 +1,17 @@
@@ -1793,7 +1793,7 @@ index 78a0cbd..72d3b31 100755
 +
 +find_package(HDF5 REQUIRED)
 +include_directories(${HDF5_INCLUDE_DIRS})
-+set(MYHDFLINKFLAGS "-L${CONDA_PREFIX}/lib/ ${CONDA_PREFIX}/lib/libhdf5_hl.so ${CONDA_PREFIX}/lib/libhdf5.so ${CONDA_PREFIX}/lib/libz.so ${CONDA_PREFIX}/lib/libsz.so ${CONDA_PREFIX}/lib/libaec.so -ldl")
++set(MYHDFLINKFLAGS "-L${CONDA_PREFIX}/lib/ ${CONDA_PREFIX}/lib/libhdf5_hl.so ${CONDA_PREFIX}/lib/libhdf5.so ${CONDA_PREFIX}/lib/libz.so.1 ${CONDA_PREFIX}/lib/libsz.so ${CONDA_PREFIX}/lib/libaec.so -ldl")
  
 -#connect with ExternalLibraries.cmake via MYBOOSTHOME
 -#include_directories(${Boost_INCLUDE_DIR})
