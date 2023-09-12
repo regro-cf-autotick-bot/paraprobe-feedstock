@@ -66,8 +66,8 @@ requirements:
     - jupyterlab
     - gitpython
     - pandas
-    - ifes-apt-tc-data-modeling
     - jupyterlab-h5web
+    - ifes-apt-tc-data-modeling =0.0.9
     - scikit-learn =1.0.2
     - ase =3.22.1
     - ipywidgets =7.6.3
