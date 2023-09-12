@@ -24,7 +24,7 @@ mv voro++-0.4.6 voro++
 cd paraprobe-toolbox
 cd code
 #quick fix to get paths right
-cp -rf mandatory ../
+cp -rf thirdparty ../
 
 cd paraprobe-utils
 cp ../../../voro++/src/* src/cxx/
