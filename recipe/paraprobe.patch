@@ -1869,3 +1869,139 @@ index bf0147d..4e3c607 100755
  
  	${MYTOOLSRCPATH}/PARAPROBE_ConfigTessellator.cpp
  	${MYTOOLSRCPATH}/PARAPROBE_TessellatorStructs.cpp
+diff --git a/code/paraprobe-utils/CMakeLists.txt b/code/paraprobe-utils/CMakeLists.txt
+index 0cfdd7d..69df46c 100755
+--- a/code/paraprobe-utils/CMakeLists.txt
++++ b/code/paraprobe-utils/CMakeLists.txt
+@@ -1,36 +1,18 @@
+ cmake_minimum_required(VERSION 3.18.4)
+ 
+-################################################################################################################################
+-##DEVELOPER SECTION#############################################################################################################
+-##in this section software developers need to make changes when debugging#######################################################
+-################################################################################################################################ 
+-
+ #please name your project accordingly
+ set(MYPROJECTNAME "paraprobe_utils")
+ message([STATUS] "Projectname is ${MYPROJECTNAME}")
+ project(${MYPROJECTNAME} LANGUAGES CXX)
+ set(CMAKE_BUILD_DIR "build")
+ 
+-#pull general information about external libraries and paths related to paraprobe
+-include("../PARAPROBE.Dependencies.cmake")
+-message([STATUS] "MYPROJECTPATH: ${MYPROJECTPATH}")
+-message([STATUS] "MYUTILSPATH: ${MYUTILSPATH}")
+-message([STATUS] "MYHDF5PATH: ${MYHDFPATH}")
+-message([STATUS] "MYBOOSTPATH: ${MYBOOSTPATH}")
+-message([STATUS] "MYCGALPATH: ${MYCGALPATH}")
+-message([STATUS] "MYEIGENPATH: ${MYEIGENPATH}")
+-message([STATUS] "MYVOROXXPATH: ${MYVOROXXPATH}")
+-
+-
+ set(EMPLOY_GNUCOMPILER ON)
++message([STATUS] "CONDA_PATH: ${CONDA_PREFIX}")
+ message([STATUS] "MYCCC_COMPILER: __${CMAKE_C_COMPILER}__")
+ message([STATUS] "MYCXX_COMPILER: __${CMAKE_CXX_COMPILER}__")
+ 
+-#define which parallelization layers are used
+ set(EMPLOY_PARALLELISM_CUDA OFF)
+ 
+-#choose optimization level
+-##-O0 nothing, debug purposes, -O1 moderate optimization, -O2 -O3 for production level up to aggressive architecture specific non-portable optimization
+ if(EMPLOY_GNUCOMPILER)
+ 	set(MYOPTLEVEL "-O2")
+ 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${MYOPTLEVEL}")
+@@ -38,58 +20,29 @@ if(EMPLOY_GNUCOMPILER)
+ 	message([STATUS] "We utilize optimization level ${MYOPTLEVEL}")
+ endif()
+ 
+-################################################################################################################################
+-##END OF INTERACTION FOR NON PRO USERS##########################################################################################
+-##here advanced users might want/need to make modifications if they use non default places for thirdparty libraries#############
+-################################################################################################################################
+-#HDF5 local installation for advanced I/O, collecting metadata and bundle analysis results together
+-include_directories("${MYHDFPATH}/include")
+-link_directories("${MYHDFPATH}/lib")
+-set(MYHDFLINKFLAGS "-L${MYHDFPATH}/lib/ ${MYHDFPATH}/lib/libhdf5_hl.a ${MYHDFPATH}/lib/libhdf5.a ${MYHDFPATH}/lib/libz.a ${MYHDFPATH}/lib/libsz.a ${MYHDFPATH}/lib/libaec.a -ldl")
+-
+-set(BOOST_ROOT "${MYBOOSTPATH}")
+-set(Boost_NO_SYSTEM_PATHS ON)
+-#set(Boost_INCLUDE_DIR "${MYBOOSTPATH}")
+-#include_directories("${MYCGALPATH}")
+-set(CGAL_DIR "${MYCGALPATH}")
+-set(EIGEN3_INCLUDE_DIR "${MYEIGENPATH}")
+-include_directories("${MYEIGENPATH}")
+-include_directories("${MYVOROXXPATH}/src")
+-
+-#GMP and MPFR is included and found alongside the CGAL library
+-#connect with ExternalLibraries.cmake via MYCGALHOME
+-find_package(CGAL QUIET)
+-if( CGAL_FOUND )
+-	include( ${CGAL_USE_FILE} )
+-	find_package(Eigen3)  #  3.1.0 REQUIRED) #(3.1.0 or greater)
+-	include(CGAL_Eigen3_support)
+-	if(NOT TARGET CGAL::Eigen3_support)
+-		message(STATUS "This project requires the Eigen library, and will not be compiled.")
+-		return()
+-	endif()
+-else()
+-	message([FATAL_ERROR] "CGAL is required, employ it!")
+-endif()
+-
+-#connect with ExternalLibraries.cmake via MYBOOSTHOME
+-#include_directories(${Boost_INCLUDE_DIR})
+-#include_directories(${MYBOOSTPATH})
++find_package(HDF5 REQUIRED)
++include_directories(${HDF5_INCLUDE_DIRS})
++set(MYHDFLINKFLAGS "-L${CONDA_PREFIX}/lib/ ${CONDA_PREFIX}/lib/libhdf5_hl.so ${CONDA_PREFIX}/lib/libhdf5.so ${CONDA_PREFIX}/lib/libz.so.1 ${CONDA_PREFIX}/lib/libsz.so ${CONDA_PREFIX}/lib/libaec.so -ldl")
+ 
+-link_directories(${Boost_LIBRARY_DIR})
+ find_package(Boost REQUIRED)
++include_directories(${Boost_INCLUDE_DIRS})
+ 
++find_package(CGAL REQUIRED)
++include                     (${CGAL_USE_FILE})
++include_directories         (${CGAL_INCLUDE_DIRS})
+ 
+-find_package(OpenSSL REQUIRED)
+-
++find_package(Eigen3 3.3 REQUIRED)
++#include_directories         (${EIGEN3_INCLUDE_DIRS})
++include_directories("${CONDA_PREFIX}/include/eigen3")
+ 
+-include_directories("${MYVOROXXPATH}/src")
++find_package(MPI REQUIRED)
++include_directories(${MPI_INCLUDE_PATH})
+ 
+-#automatically assign project name and compiler flags
++find_package(OpenSSL REQUIRED)
++set(MYSSLLINKFLAGS "-lssl -lcrypto")
+ 
+-#setting up compiler-specifics
+ if(EMPLOY_GNUCOMPILER)
+-	# set(MYVERBOSE "-fopt-info") # optimization details only
+-	set(MYVERBOSE "-Wall") # all warnings
++	set(MYVERBOSE "-fopt-info-all=opt.all")
+ 	add_definitions("${MYOPTLEVEL}")
+ 	add_definitions("${MYVERBOSE}")
+ 	set(MYOMP "-fopenmp -lpthread")
+@@ -97,17 +50,8 @@ if(EMPLOY_GNUCOMPILER)
+ 	add_definitions("-std=c++17")
+ endif()
+ 
+-#parallelization - MPI process-level
+-#query location of MPI library
+-message([STATUS] "MPI_INCLUDE_PATH ${MPI_INCLUDE_PATH}")
+-if(EMPLOY_PARALLELISM_MPI)
+-	find_package(MPI REQUIRED)
+-	include_directories(${MPI_INCLUDE_PATH})
+-endif()
+-
+-#specific paths of dependencies for this tool
+-set(MYTOOLSRCPATH "${MYPROJECTPATH}/code/paraprobe-utils/src/cxx")
+-set(MYVOROSRCPATH "${MYVOROXXPATH}/src")
++set(MYTOOLSRCPATH "src/cxx")
++set(MYVOROSRCPATH "../../../voro++/src")
+ 
+ add_library(paraprobe-utils OBJECT
+ 	${MYTOOLSRCPATH}/PARAPROBE_ArgsAndGitSha.cpp
