@@ -66,14 +66,15 @@ requirements:
     - ase =3.22.1
     - ipywidgets =7.6.3
     - h5py 
-    - jupyterlab[full] =3.0.0
+    - jupyterlab[full]
     - punx =0.3.0
     - nexpy =0.14.4
     - silx[full] =1.0.0
     - numpy >=1.17
     - gitpython
     - pandas
-    - ifes_apt_tc_data_modeling
+    - ifes-apt-tc-data-modeling
+    - jupyterlab-h5web
 test:
   imports:
     - paraprobe_parmsetup
