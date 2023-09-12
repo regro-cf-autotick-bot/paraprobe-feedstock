@@ -1641,7 +1641,7 @@ index 84c37f6..9217c1a 100755
  	${MYTOOLSRCPATH}/PARAPROBE_ConfigSurfacer.cpp
  	${MYTOOLSRCPATH}/PARAPROBE_SurfacerStructs.cpp
 diff --git a/code/paraprobe-tessellator/CMakeLists.txt b/code/paraprobe-tessellator/CMakeLists.txt
-index bf0147d..424b1a4 100755
+index bf0147d..45dda13 100755
 --- a/code/paraprobe-tessellator/CMakeLists.txt
 +++ b/code/paraprobe-tessellator/CMakeLists.txt
 @@ -1,34 +1,18 @@
@@ -1853,19 +1853,19 @@ index bf0147d..424b1a4 100755
 +	${COMPILEPATH}/PARAPROBE_TriangleSoupHdl.cpp.o
 +	${COMPILEPATH}/PARAPROBE_ToolsBaseHdl.cpp.o
 +
-+	${COMPILEPATH}/c_loops.cc.o
-+	${COMPILEPATH}/cell.cc.o
++	${MYVOROSRCPATH}/c_loops.cc
++	${MYVOROSRCPATH}/cell.cc
 +#	${COMPILEPATH}/../../${MYPROJECTPATH}/code/thirdparty/mandatory/voroxx/voro/src/cmd_line.cc
-+	${COMPILEPATH}/common.cc.o
-+	${COMPILEPATH}/container.cc.o
-+	${COMPILEPATH}/container_prd.cc.o
-+	${COMPILEPATH}/pre_container.cc.o
-+	${COMPILEPATH}/unitcell.cc.o
-+	${COMPILEPATH}/v_base.cc.o
++	${MYVOROSRCPATH}/common.cc
++	${MYVOROSRCPATH}/container.cc
++	${MYVOROSRCPATH}/container_prd.cc
++	${MYVOROSRCPATH}/pre_container.cc
++	${MYVOROSRCPATH}/unitcell.cc
++	${MYVOROSRCPATH}/v_base.cc
 +#	${COMPILEPATH}/../../${MYPROJECTPATH}/code/thirdparty/mandatory/voroxx/voro/src/v_base_wl.cc
-+	${COMPILEPATH}/v_compute.cc.o
++	${MYVOROSRCPATH}/v_compute.cc
 +#	${COMPILEPATH}/../../${MYPROJECTPATH}/code/thirdparty/mandatory/voroxx/voro/src/voro++.cc
-+	${COMPILEPATH}/wall.cc.o
++	${MYVOROSRCPATH}/wall.cc
  
  	${MYTOOLSRCPATH}/PARAPROBE_ConfigTessellator.cpp
  	${MYTOOLSRCPATH}/PARAPROBE_TessellatorStructs.cpp
