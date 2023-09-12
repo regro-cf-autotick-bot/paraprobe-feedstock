@@ -87,7 +87,7 @@ index ccabffe..745f5e4 100644
  
  class AutoReporterTessellator():
 diff --git a/code/paraprobe-distancer/CMakeLists.txt b/code/paraprobe-distancer/CMakeLists.txt
-index 66982b8..027b3bc 100755
+index 66982b8..7515ed5 100755
 --- a/code/paraprobe-distancer/CMakeLists.txt
 +++ b/code/paraprobe-distancer/CMakeLists.txt
 @@ -1,34 +1,17 @@
@@ -196,7 +196,7 @@ index 66982b8..027b3bc 100755
  	add_definitions("${MYOPTLEVEL}")
  	add_definitions("${MYVERBOSE}")
  	set(MYOMP "-fopenmp -lpthread")
-@@ -88,52 +50,46 @@ if(EMPLOY_GNUCOMPILER)
+@@ -88,52 +50,45 @@ if(EMPLOY_GNUCOMPILER)
  	add_definitions("-std=c++17")
  endif()
  
@@ -211,7 +211,6 @@ index 66982b8..027b3bc 100755
 -#specific paths of dependencies for this tool
 -set(MYTOOLSRCPATH "${MYTOOLPATH}/src/cxx")
 +set(MYTOOLSRCPATH "src/cxx")
-+set(MYEXTPATH "../code/thirdparty/mandatory/hdf5cxxwrapper/src/cxx")
 +set(MYVOROSRCPATH "../../../voro++/src")
 +set(COMPILEPATH "../compiled_code")
  
@@ -287,7 +286,7 @@ index 66982b8..027b3bc 100755
  	${MYTOOLSRCPATH}/PARAPROBE_ConfigDistancer.cpp
  	${MYTOOLSRCPATH}/PARAPROBE_DistancerStructs.cpp
 diff --git a/code/paraprobe-intersector/CMakeLists.txt b/code/paraprobe-intersector/CMakeLists.txt
-index ef5976a..b17e4e3 100644
+index ef5976a..1803a8b 100644
 --- a/code/paraprobe-intersector/CMakeLists.txt
 +++ b/code/paraprobe-intersector/CMakeLists.txt
 @@ -1,40 +1,17 @@
@@ -333,7 +332,7 @@ index ef5976a..b17e4e3 100644
  if(EMPLOY_GNUCOMPILER)
  	set(MYOPTLEVEL "-O2")
  	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${MYOPTLEVEL}")
-@@ -42,107 +19,82 @@ if(EMPLOY_GNUCOMPILER)
+@@ -42,107 +19,81 @@ if(EMPLOY_GNUCOMPILER)
  	message([STATUS] "We utilize optimization level ${MYOPTLEVEL}")
  endif()
  
@@ -420,7 +419,6 @@ index ef5976a..b17e4e3 100644
  #specific paths of dependencies for this tool
 -set(MYTOOLSRCPATH "${MYTOOLPATH}/src/cxx")
 +set(MYTOOLSRCPATH "src/cxx")
-+set(MYEXTPATH "../code/thirdparty/mandatory/hdf5cxxwrapper/src/cxx")
 +set(MYVOROSRCPATH "../../../voro++/src")
 +set(COMPILEPATH "../compiled_code")
  
@@ -501,7 +499,7 @@ index ef5976a..b17e4e3 100644
  	${MYTOOLSRCPATH}/CONFIG_Intersector.cpp
  	${MYTOOLSRCPATH}/PARAPROBE_IntersectorPQPInterface.cpp
  	${MYTOOLSRCPATH}/PARAPROBE_IntersectorStructs.cpp
-@@ -157,7 +109,7 @@ add_executable(${MYPROJECTNAME}
+@@ -157,7 +108,7 @@ add_executable(${MYPROJECTNAME}
  )
  
  #linking process, the target link libraries command is specific for each tool of the toolbox
@@ -511,10 +509,10 @@ index ef5976a..b17e4e3 100644
  
  #target_link_libraries( ${MYPROJECTNAME} -lgomp -lpthread ${MPI_LIBRARIES} ${MYTETGENLINKFLAGS} ${MYHDFLINKFLAGS} -lm ${Boost_LIBRARIES} )
 diff --git a/code/paraprobe-nanochem/CMakeLists.txt b/code/paraprobe-nanochem/CMakeLists.txt
-index 032a1b4..0625a4a 100644
+index 032a1b4..213cf6e 100644
 --- a/code/paraprobe-nanochem/CMakeLists.txt
 +++ b/code/paraprobe-nanochem/CMakeLists.txt
-@@ -1,156 +1,97 @@
+@@ -1,156 +1,96 @@
  cmake_minimum_required(VERSION 3.18.4)
  
 -################################################################################################################################
@@ -655,7 +653,6 @@ index 032a1b4..0625a4a 100644
  #specific paths of dependencies for this tool
 -set(MYTOOLSRCPATH "${MYTOOLPATH}/src/cxx")
 +set(MYTOOLSRCPATH "src/cxx")
-+set(MYEXTPATH "../code/thirdparty/mandatory/hdf5cxxwrapper/src/cxx")
 +set(MYVOROSRCPATH "../../../voro++/src")
 +set(COMPILEPATH "../compiled_code")
  
@@ -730,7 +727,7 @@ index 032a1b4..0625a4a 100644
  
  	${MYTOOLSRCPATH}/PARAPROBE_ConfigNanochem.cpp
  	${MYTOOLSRCPATH}/PARAPROBE_NanochemMCInterface.cpp
-@@ -172,7 +113,7 @@ add_executable(${MYPROJECTNAME}
+@@ -172,7 +112,7 @@ add_executable(${MYPROJECTNAME}
  )
  
  #linking process, the target link libraries command is specific for each tool of the toolbox
@@ -1040,7 +1037,7 @@ index 0754dcb..4203eb3 100644
  
  class RoiRotatedCuboid:
 diff --git a/code/paraprobe-ranger/CMakeLists.txt b/code/paraprobe-ranger/CMakeLists.txt
-index 208a709..9e58988 100755
+index 208a709..0588a4b 100755
 --- a/code/paraprobe-ranger/CMakeLists.txt
 +++ b/code/paraprobe-ranger/CMakeLists.txt
 @@ -1,34 +1,17 @@
@@ -1080,7 +1077,7 @@ index 208a709..9e58988 100755
  if(EMPLOY_GNUCOMPILER)
  	set(MYOPTLEVEL "-O2")
  	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${MYOPTLEVEL}")
-@@ -36,103 +19,80 @@ if(EMPLOY_GNUCOMPILER)
+@@ -36,103 +19,79 @@ if(EMPLOY_GNUCOMPILER)
  	message([STATUS] "We utilize optimization level ${MYOPTLEVEL}")
  endif()
  
@@ -1167,7 +1164,6 @@ index 208a709..9e58988 100755
  #specific paths of dependencies for this tool
 -set(MYTOOLSRCPATH "${MYTOOLPATH}/src/cxx")
 +set(MYTOOLSRCPATH "src/cxx")
-+set(MYEXTPATH "../code/thirdparty/mandatory/hdf5cxxwrapper/src/cxx")
 +set(MYVOROSRCPATH "../../../voro++/src")
 +set(COMPILEPATH "../compiled_code")
  
@@ -1243,7 +1239,7 @@ index 208a709..9e58988 100755
  	${MYTOOLSRCPATH}/PARAPROBE_ConfigRanger.cpp
  	${MYTOOLSRCPATH}/PARAPROBE_RangerStructs.cpp
 diff --git a/code/paraprobe-spatstat/CMakeLists.txt b/code/paraprobe-spatstat/CMakeLists.txt
-index 04d31c4..5389dee 100644
+index 04d31c4..5e5d828 100644
 --- a/code/paraprobe-spatstat/CMakeLists.txt
 +++ b/code/paraprobe-spatstat/CMakeLists.txt
 @@ -1,35 +1,18 @@
@@ -1284,7 +1280,7 @@ index 04d31c4..5389dee 100644
  if(EMPLOY_GNUCOMPILER)
  	set(MYOPTLEVEL "-O2")
  	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${MYOPTLEVEL}")
-@@ -37,102 +20,79 @@ if(EMPLOY_GNUCOMPILER)
+@@ -37,102 +20,78 @@ if(EMPLOY_GNUCOMPILER)
  	message([STATUS] "We utilize optimization level ${MYOPTLEVEL}")
  endif()
  
@@ -1371,7 +1367,6 @@ index 04d31c4..5389dee 100644
  #specific paths of dependencies for this tool
 -set(MYTOOLSRCPATH "${MYTOOLPATH}/src/cxx")
 +set(MYTOOLSRCPATH "src/cxx")
-+set(MYEXTPATH "../code/thirdparty/mandatory/hdf5cxxwrapper/src/cxx")
 +set(MYVOROSRCPATH "../../../voro++/src")
 +set(COMPILEPATH "../compiled_code")
  
@@ -1447,7 +1442,7 @@ index 04d31c4..5389dee 100644
  	${MYTOOLSRCPATH}/PARAPROBE_ConfigSpatstat.cpp
  	${MYTOOLSRCPATH}/PARAPROBE_SpatstatStructs.cpp
 diff --git a/code/paraprobe-surfacer/CMakeLists.txt b/code/paraprobe-surfacer/CMakeLists.txt
-index 84c37f6..51ae85f 100755
+index 84c37f6..9217c1a 100755
 --- a/code/paraprobe-surfacer/CMakeLists.txt
 +++ b/code/paraprobe-surfacer/CMakeLists.txt
 @@ -1,38 +1,17 @@
@@ -1565,13 +1560,12 @@ index 84c37f6..51ae85f 100755
  	set(MYOMP "-fopenmp -lpthread")
  	add_definitions(${MYOMP})
  	add_definitions("-std=c++17")
-@@ -101,43 +60,46 @@ if(EMPLOY_PARALLELISM_MPI)
+@@ -101,43 +60,45 @@ if(EMPLOY_PARALLELISM_MPI)
  endif()
  
  #specific paths of dependencies for this tool
 -set(MYTOOLSRCPATH "${MYTOOLPATH}/src/cxx")
 +set(MYTOOLSRCPATH "src/cxx")
-+set(MYEXTPATH "../code/thirdparty/mandatory/hdf5cxxwrapper/src/cxx")
 +set(MYVOROSRCPATH "../../../voro++/src")
 +set(COMPILEPATH "../compiled_code")
  
@@ -1647,7 +1641,7 @@ index 84c37f6..51ae85f 100755
  	${MYTOOLSRCPATH}/PARAPROBE_ConfigSurfacer.cpp
  	${MYTOOLSRCPATH}/PARAPROBE_SurfacerStructs.cpp
 diff --git a/code/paraprobe-tessellator/CMakeLists.txt b/code/paraprobe-tessellator/CMakeLists.txt
-index bf0147d..cd6b284 100755
+index bf0147d..4e3c607 100755
 --- a/code/paraprobe-tessellator/CMakeLists.txt
 +++ b/code/paraprobe-tessellator/CMakeLists.txt
 @@ -1,34 +1,18 @@
@@ -1687,7 +1681,7 @@ index bf0147d..cd6b284 100755
  if(EMPLOY_GNUCOMPILER)
  	set(MYOPTLEVEL "-O2")
  	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${MYOPTLEVEL}")
-@@ -36,117 +20,93 @@ if(EMPLOY_GNUCOMPILER)
+@@ -36,117 +20,92 @@ if(EMPLOY_GNUCOMPILER)
  	message([STATUS] "We utilize optimization level ${MYOPTLEVEL}")
  endif()
  
@@ -1773,7 +1767,6 @@ index bf0147d..cd6b284 100755
  #specific paths of dependencies for this tool
 -set(MYTOOLSRCPATH "${MYTOOLPATH}/src/cxx")
 +set(MYTOOLSRCPATH "src/cxx")
-+set(MYEXTPATH "../code/thirdparty/mandatory/hdf5cxxwrapper/src/cxx")
 +set(MYVOROSRCPATH "../../../voro++/src")
 +set(COMPILEPATH "../compiled_code")
  
