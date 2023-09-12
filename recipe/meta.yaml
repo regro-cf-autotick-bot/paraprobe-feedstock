@@ -50,12 +50,12 @@ requirements:
     - hdf5 * {{ mpi_prefix }}_*
     - tetgen
     - fftw
-    - boost =1.78.0
-    - boost-cpp =1.78.0
+    - boost =1.81.0
+    - boost-cpp =1.81.0
     - eigen 
     - voro
-    - cgal =5.5.1
-    - cgal-cpp =5.5.1
+    - cgal =5.5.2
+    - cgal-cpp =5.5.2
     - libaec
     - numpy >=1.17
     - libzlib =1.2.13
@@ -73,6 +73,7 @@ requirements:
     - numpy >=1.17
     - gitpython
     - pandas
+    - ifes_apt_tc_data_modeling
 test:
   imports:
     - paraprobe_parmsetup
