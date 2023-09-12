@@ -62,19 +62,19 @@ requirements:
   run:
     - python
     - setuptools
-    - scikit-learn =1.0.2
-    - ase =3.22.1
-    - ipywidgets =7.6.3
     - h5py 
-    - jupyterlab[full]
-    - punx =0.3.0
-    - nexpy =0.14.4
-    - silx[full] =1.0.0
-    - numpy >=1.17
+    - jupyterlab
     - gitpython
     - pandas
     - ifes-apt-tc-data-modeling
     - jupyterlab-h5web
+    - scikit-learn =1.0.2
+    - ase =3.22.1
+    - ipywidgets =7.6.3
+    - punx =0.3.0
+    - nexpy =0.14.4
+    - silx[full] =1.0.0
+    - numpy >=1.17
 test:
   imports:
     - paraprobe_parmsetup
