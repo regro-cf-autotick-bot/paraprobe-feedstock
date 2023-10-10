@@ -72,7 +72,6 @@ requirements:
     - nexpy =0.14.4
     - silx[full] =1.0.0
     - numpy >=1.17
-    - openssl
 test:
   imports:
     - paraprobe_parmsetup
