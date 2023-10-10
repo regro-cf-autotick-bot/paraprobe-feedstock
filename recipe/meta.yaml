@@ -1,5 +1,5 @@
 {% set version = "v0.4" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 package:
   name: paraprobe
@@ -49,8 +49,8 @@ requirements:
     - hdf5 * {{ mpi_prefix }}_*
     - tetgen
     - fftw
-    - boost =1.78.0
-    - boost-cpp =1.78.0
+    - libboost-devel
+    - libboost-python-devel
     - eigen 
     - voro
     - cgal =5.5.2
