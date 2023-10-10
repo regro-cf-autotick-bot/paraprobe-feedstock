@@ -70,7 +70,7 @@ requirements:
     - ase
     - punx
     - nexpy
-    - silx[full]
+    - silx
     - {{ pin_compatible('numpy') }}
 test:
   imports:
