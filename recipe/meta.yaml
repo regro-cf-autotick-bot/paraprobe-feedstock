@@ -24,6 +24,14 @@ build:
   {% set mpi_prefix = "nompi" %}
   {% endif %}
   string: "{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}"
+  ignore_run_exports_from:
+    - fftw
+    - libaec
+    - libhwloc
+    # need to keep voro because it's a static lib
+    # that (likely) ends up in the link interface
+    # - voro
+    - zlib
 
 requirements:
   build:
