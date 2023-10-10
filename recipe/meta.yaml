@@ -56,7 +56,7 @@ requirements:
     - cgal =5.6
     - cgal-cpp =5.6
     - libaec
-    - numpy >=1.17
+    - numpy
     - openssl
     - zlib
   run:
@@ -71,7 +71,7 @@ requirements:
     - punx =0.3.0
     - nexpy =0.14.4
     - silx[full] =1.0.0
-    - numpy >=1.17
+    - {{ pin_compatible('numpy') }}
 test:
   imports:
     - paraprobe_parmsetup
