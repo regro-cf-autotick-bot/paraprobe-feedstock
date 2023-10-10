@@ -53,8 +53,8 @@ requirements:
     - libboost-python-devel
     - eigen 
     - voro
-    - cgal =5.5.2
-    - cgal-cpp =5.5.2
+    - cgal =5.6
+    - cgal-cpp =5.6
     - libaec
     - numpy >=1.17
     - libzlib =1.2.13
