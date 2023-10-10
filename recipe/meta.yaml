@@ -1,13 +1,12 @@
-{% set build = 0 %}
-{% set name = "paraprobe" %}
 {% set version = "v0.4" %}
+{% set build = 0 %}
 
 package:
-  name: {{ name|lower }}
+  name: paraprobe
   version: {{ version }}
 
 source:
-  - url: https://gitlab.com/{{ name }}/{{ name }}-toolbox/-/archive/{{ version }}/{{ name }}-toolbox-{{ version }}.tar.gz
+  - url: https://gitlab.com/paraprobe/paraprobe-toolbox/-/archive/{{ version }}/paraprobe-toolbox-{{ version }}.tar.gz
     sha256: 9e2c196802b0a2a86e754a615b782ed0775fbc0ff6d0837cf66f9f24c19b2852
     folder: paraprobe-toolbox
     patches:
