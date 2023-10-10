@@ -65,12 +65,12 @@ requirements:
     - h5py 
     - gitpython
     - pandas
-    - ifes-apt-tc-data-modeling =0.0.9* *_1
-    - scikit-learn =1.0.2
-    - ase =3.22.1
-    - punx =0.3.0
-    - nexpy =0.14.4
-    - silx[full] =1.0.0
+    - ifes-apt-tc-data-modeling
+    - scikit-learn
+    - ase
+    - punx
+    - nexpy
+    - silx[full]
     - {{ pin_compatible('numpy') }}
 test:
   imports:
