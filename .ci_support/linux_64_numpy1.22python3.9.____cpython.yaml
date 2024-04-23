@@ -22,14 +22,22 @@ hdf5:
 - 1.14.2
 libaec:
 - '1'
+libboost_devel:
+- '1.82'
+libboost_python_devel:
+- '1.82'
 mpfr:
 - '4'
 mpi:
 - mpich
 mpich:
 - '4'
+numpy:
+- '1.22'
 openmpi:
 - '4'
+openssl:
+- '3'
 pin_run_as_build:
   python:
     min_pin: x.x
@@ -41,3 +49,7 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+- - python
+  - numpy
+zlib:
+- '1.2'

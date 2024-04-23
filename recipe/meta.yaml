@@ -1,13 +1,12 @@
-{% set build = 0 %}
-{% set name = "paraprobe" %}
 {% set version = "v0.4" %}
+{% set build = 1 %}
 
 package:
-  name: {{ name|lower }}
+  name: paraprobe
   version: {{ version }}
 
 source:
-  - url: https://gitlab.com/{{ name }}/{{ name }}-toolbox/-/archive/{{ version }}/{{ name }}-toolbox-{{ version }}.tar.gz
+  - url: https://gitlab.com/paraprobe/paraprobe-toolbox/-/archive/{{ version }}/paraprobe-toolbox-{{ version }}.tar.gz
     sha256: 9e2c196802b0a2a86e754a615b782ed0775fbc0ff6d0837cf66f9f24c19b2852
     folder: paraprobe-toolbox
     patches:
@@ -25,6 +24,14 @@ build:
   {% set mpi_prefix = "nompi" %}
   {% endif %}
   string: "{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}"
+  ignore_run_exports_from:
+    - fftw
+    - libaec
+    - libhwloc
+    # need to keep voro because it's a static lib
+    # that (likely) ends up in the link interface
+    # - voro
+    - zlib
 
 requirements:
   build:
@@ -50,30 +57,28 @@ requirements:
     - hdf5 * {{ mpi_prefix }}_*
     - tetgen
     - fftw
-    - boost =1.78.0
-    - boost-cpp =1.78.0
+    - libboost-headers
     - eigen 
     - voro
-    - cgal =5.5.2
-    - cgal-cpp =5.5.2
+    - cgal =5.6
+    - cgal-cpp =5.6
     - libaec
-    - numpy >=1.17
-    - libzlib =1.2.13
+    - numpy
     - openssl
+    - zlib
   run:
     - python
     - setuptools
     - h5py 
     - gitpython
     - pandas
-    - ifes-apt-tc-data-modeling =0.0.9* *_1
-    - scikit-learn =1.0.2
-    - ase =3.22.1
-    - punx =0.3.0
-    - nexpy =0.14.4
-    - silx[full] =1.0.0
-    - numpy >=1.17
-    - openssl
+    - ifes-apt-tc-data-modeling
+    - scikit-learn
+    - ase
+    - punx
+    - nexpy
+    - silx
+    - {{ pin_compatible('numpy') }}
 test:
   imports:
     - paraprobe_parmsetup
