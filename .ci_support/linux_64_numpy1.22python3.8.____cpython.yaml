@@ -2,6 +2,10 @@ c_compiler:
 - gcc
 c_compiler_version:
 - '12'
+c_stdlib:
+- sysroot
+c_stdlib_version:
+- '2.12'
 cdt_name:
 - cos6
 channel_sources:
@@ -19,13 +23,11 @@ fftw:
 gmp:
 - '6'
 hdf5:
-- 1.14.2
+- 1.14.3
 libaec:
 - '1'
-libboost_devel:
-- '1.82'
-libboost_python_devel:
-- '1.82'
+libhwloc:
+- 2.9.3
 mpfr:
 - '4'
 mpi:
@@ -49,6 +51,8 @@ target_platform:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+- - c_stdlib_version
+  - cdt_name
 - - python
   - numpy
 zlib:
