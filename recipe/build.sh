@@ -40,7 +40,7 @@ ls
 cd ..
 
 mkdir compiled_code
-cp paraprobe-utils/CMakeFiles/utils.dir/src/cxx/* compiled_code/
+cp utils/CMakeFiles/utils.dir/src/cxx/* compiled_code/
 
 #cd paraprobe-distancer
 #export CXXFLAGS="$CXXFLAGS -DBOOST_ERROR_CODE_HEADER_ONLY"
