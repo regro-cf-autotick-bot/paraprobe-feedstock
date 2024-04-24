@@ -42,21 +42,21 @@ cd ..
 mkdir compiled_code
 cp utils/CMakeFiles/utils.dir/src/cxx/* compiled_code/
 
-ls
-pwd
-cd nanochem
-pwd
-echo "entered directory nanochem"
+#ls
+#pwd
+#cd nanochem
+#pwd
+#echo "entered directory nanochem"
 
-export CXXFLAGS="$CXXFLAGS -DBOOST_ERROR_CODE_HEADER_ONLY"
-cmake -D Boost_NO_BOOST_CMAKE=ON \
-	  -D CMAKE_BUILD_TYPE=Release \
-	  -D CMAKE_CXX_COMPILER=mpicxx \
-	  -D LOCAL_INSTALL=OFF \
-	  -D CONDA_PREFIX=${PREFIX} .
-make clean
-cp paraprobe_nanochem ${PREFIX}/bin/
-cd ..
+#export CXXFLAGS="$CXXFLAGS -DBOOST_ERROR_CODE_HEADER_ONLY"
+#cmake -D Boost_NO_BOOST_CMAKE=ON \
+#	  -D CMAKE_BUILD_TYPE=Release \
+#	  -D CMAKE_CXX_COMPILER=mpicxx \
+#	  -D LOCAL_INSTALL=OFF \
+#	  -D CONDA_PREFIX=${PREFIX} .
+#make clean
+#cp paraprobe_nanochem ${PREFIX}/bin/
+#cd ..
 
 ls
 cd distancer
