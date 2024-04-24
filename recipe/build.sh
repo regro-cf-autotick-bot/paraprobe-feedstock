@@ -52,9 +52,9 @@ export CXXFLAGS="$CXXFLAGS -DBOOST_ERROR_CODE_HEADER_ONLY"
 cmake -D Boost_NO_BOOST_CMAKE=ON \
 	  -D CMAKE_BUILD_TYPE=Release \
 	  -D CMAKE_CXX_COMPILER=mpicxx \
-	  -D LOCAL_INSTALL=OFF \			
+	  -D LOCAL_INSTALL=OFF \
 	  -D CONDA_PREFIX=${PREFIX} .
-make
+make clean
 cp paraprobe_nanochem ${PREFIX}/bin/
 cd ..
 
