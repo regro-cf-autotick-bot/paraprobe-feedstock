@@ -43,7 +43,11 @@ mkdir compiled_code
 cp utils/CMakeFiles/utils.dir/src/cxx/* compiled_code/
 
 ls
+pwd
 cd nanochem
+pwd
+echo "entered directory nanochem"
+
 export CXXFLAGS="$CXXFLAGS -DBOOST_ERROR_CODE_HEADER_ONLY"
 cmake -D Boost_NO_BOOST_CMAKE=ON \
 	  -D CMAKE_BUILD_TYPE=Release \
