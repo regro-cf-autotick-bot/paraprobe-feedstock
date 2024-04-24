@@ -260,6 +260,37 @@ index ed33aa5..e56b1f4 100644
  
  
  class ReporterTessellator():
+diff --git a/code/tessellator/CMakeLists.txt b/code/tessellator/CMakeLists.txt
+index 6d401d2..0a8cce7 100644
+--- a/code/tessellator/CMakeLists.txt
++++ b/code/tessellator/CMakeLists.txt
+@@ -126,16 +126,16 @@ add_executable(${MYPROJECTNAME}
+ 	${COMPILEPATH}/PARAPROBE_TriangleSoupHdl.cpp.o
+ 	${COMPILEPATH}/PARAPROBE_ToolsBaseHdl.cpp.o
+ 
+-	${MYVOROSRCPATH}/c_loops.cc.o
+-	${MYVOROSRCPATH}/cell.cc.o
+-	${MYVOROSRCPATH}/common.cc.o
+-	${MYVOROSRCPATH}/container.cc.o
+-	${MYVOROSRCPATH}/container_prd.cc.o
+-	${MYVOROSRCPATH}/pre_container.cc.o
+-	${MYVOROSRCPATH}/unitcell.cc.o
+-	${MYVOROSRCPATH}/v_base.cc.o
+-	${MYVOROSRCPATH}/v_compute.cc.o
+-	${MYVOROSRCPATH}/wall.cc.o
++	${MYVOROSRCPATH}/c_loops.cc
++	${MYVOROSRCPATH}/cell.cc
++	${MYVOROSRCPATH}/common.cc
++	${MYVOROSRCPATH}/container.cc
++	${MYVOROSRCPATH}/container_prd.cc
++	${MYVOROSRCPATH}/pre_container.cc
++	${MYVOROSRCPATH}/unitcell.cc
++	${MYVOROSRCPATH}/v_base.cc
++	${MYVOROSRCPATH}/v_compute.cc
++	${MYVOROSRCPATH}/wall.cc
+ 
+ 	${MYTOOLSRCPATH}/PARAPROBE_ConfigTessellator.cpp
+ 	${MYTOOLSRCPATH}/PARAPROBE_TessellatorStructs.cpp
 diff --git a/code/utils/src/python/primscontinuum.py b/code/utils/src/python/primscontinuum.py
 index 6a10152..1fdc670 100644
 --- a/code/utils/src/python/primscontinuum.py
