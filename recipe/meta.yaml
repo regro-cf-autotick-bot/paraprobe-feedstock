@@ -1,5 +1,5 @@
-{% set version = "v0.4" %}
-{% set build = 2 %}
+{% set version = "v0.5" %}
+{% set build = 0 %}
 
 package:
   name: paraprobe
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://gitlab.com/paraprobe/paraprobe-toolbox/-/archive/{{ version }}/paraprobe-toolbox-{{ version }}.tar.gz
-    sha256: 9e2c196802b0a2a86e754a615b782ed0775fbc0ff6d0837cf66f9f24c19b2852
+    sha256: edce39f19715b262842e32b8ef0515c98ee432b364e629cb05eda340a35e00e0
     folder: paraprobe-toolbox
     patches:
       - paraprobe.patch
@@ -61,8 +61,8 @@ requirements:
     - libboost-headers
     - eigen 
     - voro
-    - cgal =5.6
-    - cgal-cpp =5.6
+    - cgal =5.6.1
+    - cgal-cpp =5.6.1
     - libaec
     - numpy
     - openssl
