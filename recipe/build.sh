@@ -34,7 +34,7 @@ cp -rf thirdparty ../
 
 cd utils
 cp ../../../voro++/src/* src/cxx/
-cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=mpicxx -DCONDA_PREFIX=${PREFIX} -DLOCAL_INSTALL=OFF.
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=mpicxx -DCONDA_PREFIX=${PREFIX} -DLOCAL_INSTALL=OFF .
 make
 ls
 cd ..
