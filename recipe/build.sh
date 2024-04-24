@@ -80,7 +80,7 @@ cmake -D Boost_NO_BOOST_CMAKE=ON \
 	  -D LOCAL_INSTALL=OFF \
 	  -D CONDA_PREFIX=${PREFIX} .
 make
-cp ranger ${PREFIX}/bin/paraprobe_ranger
+cp paraprobe_ranger ${PREFIX}/bin/
 cd ..
 
 cd spatstat
@@ -91,7 +91,7 @@ cmake -D Boost_NO_BOOST_CMAKE=ON \
 	  -D LOCAL_INSTALL=OFF \
 	  -D CONDA_PREFIX=${PREFIX} .
 make
-cp spatstat ${PREFIX}/bin/paraprobe_spatstat
+cp paraprobe_spatstat ${PREFIX}/bin/
 cd ..
 
 cd surfacer
@@ -102,7 +102,7 @@ cmake -D Boost_NO_BOOST_CMAKE=ON \
 	  -D LOCAL_INSTALL=OFF \
 	  -D CONDA_PREFIX=${PREFIX} .
 make
-cp surfacer ${PREFIX}/bin/paraprobe_surfacer
+cp paraprobe_surfacer ${PREFIX}/bin/
 cd ..
 
 cd tessellator
@@ -113,7 +113,7 @@ cmake -D Boost_NO_BOOST_CMAKE=ON \
 	  -D LOCAL_INSTALL=OFF \
 	  -D CONDA_PREFIX=${PREFIX} .
 make
-cp tessellator ${PREFIX}/bin/paraprobe_tessellator
+cp paraprobe_tessellator ${PREFIX}/bin/
 cd ..
 
 mv $mpifort.orig $mpifort
