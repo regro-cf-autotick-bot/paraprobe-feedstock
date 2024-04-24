@@ -42,28 +42,7 @@ cd ..
 mkdir compiled_code
 cp utils/CMakeFiles/utils.dir/src/cxx/* compiled_code/
 
-cd distancer
-export CXXFLAGS="$CXXFLAGS -DBOOST_ERROR_CODE_HEADER_ONLY"
-cmake -D Boost_NO_BOOST_CMAKE=ON \
-	  -D CMAKE_BUILD_TYPE=Release \
-	  -D CMAKE_CXX_COMPILER=mpicxx \
-	  -D LOCAL_INSTALL=OFF \
-	  -D CONDA_PREFIX=${PREFIX} .
-make
-cp paraprobe_distancer ${PREFIX}/bin/
-cd ..
-
-cd intersector
-export CXXFLAGS="$CXXFLAGS -DBOOST_ERROR_CODE_HEADER_ONLY"
-cmake -D Boost_NO_BOOST_CMAKE=ON \
-	  -D CMAKE_BUILD_TYPE=Release \
-	  -D CMAKE_CXX_COMPILER=mpicxx \
-	  -D LOCAL_INSTALL=OFF \
-	  -D CONDA_PREFIX=${PREFIX} .
-make
-cp paraprobe_intersector ${PREFIX}/bin/
-cd ..
-
+ls
 cd nanochem
 export CXXFLAGS="$CXXFLAGS -DBOOST_ERROR_CODE_HEADER_ONLY"
 cmake -D Boost_NO_BOOST_CMAKE=ON \
@@ -75,6 +54,31 @@ make
 cp paraprobe_nanochem ${PREFIX}/bin/
 cd ..
 
+ls
+cd distancer
+export CXXFLAGS="$CXXFLAGS -DBOOST_ERROR_CODE_HEADER_ONLY"
+cmake -D Boost_NO_BOOST_CMAKE=ON \
+	  -D CMAKE_BUILD_TYPE=Release \
+	  -D CMAKE_CXX_COMPILER=mpicxx \
+	  -D LOCAL_INSTALL=OFF \
+	  -D CONDA_PREFIX=${PREFIX} .
+make
+cp paraprobe_distancer ${PREFIX}/bin/
+cd ..
+
+ls
+cd intersector
+export CXXFLAGS="$CXXFLAGS -DBOOST_ERROR_CODE_HEADER_ONLY"
+cmake -D Boost_NO_BOOST_CMAKE=ON \
+	  -D CMAKE_BUILD_TYPE=Release \
+	  -D CMAKE_CXX_COMPILER=mpicxx \
+	  -D LOCAL_INSTALL=OFF \
+	  -D CONDA_PREFIX=${PREFIX} .
+make
+cp paraprobe_intersector ${PREFIX}/bin/
+cd ..
+
+ls
 cd ranger
 export CXXFLAGS="$CXXFLAGS -DBOOST_ERROR_CODE_HEADER_ONLY"
 cmake -D Boost_NO_BOOST_CMAKE=ON \
@@ -86,6 +90,7 @@ make
 cp paraprobe_ranger ${PREFIX}/bin/
 cd ..
 
+ls
 cd spatstat
 export CXXFLAGS="$CXXFLAGS -DBOOST_ERROR_CODE_HEADER_ONLY"
 cmake -D Boost_NO_BOOST_CMAKE=ON \
@@ -97,6 +102,7 @@ make
 cp paraprobe_spatstat ${PREFIX}/bin/
 cd ..
 
+ls
 cd surfacer
 export CXXFLAGS="$CXXFLAGS -DBOOST_ERROR_CODE_HEADER_ONLY"
 cmake -D Boost_NO_BOOST_CMAKE=ON \
@@ -108,6 +114,7 @@ make
 cp paraprobe_surfacer ${PREFIX}/bin/
 cd ..
 
+ls
 cd tessellator
 export CXXFLAGS="$CXXFLAGS -DBOOST_ERROR_CODE_HEADER_ONLY"
 cmake -D Boost_NO_BOOST_CMAKE=ON \
