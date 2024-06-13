@@ -25,9 +25,7 @@ build:
   {% endif %}
   string: "{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}"
   ignore_run_exports_from:
-    - fftw
     - libaec
-    - libhwloc
     # need to keep voro because it's a static lib
     # that (likely) ends up in the link interface
     # - voro
@@ -53,16 +51,13 @@ requirements:
     - {{ mpi }}
     - gmp
     - mpfr
-    - libhwloc
     - hdf5
     - hdf5 * {{ mpi_prefix }}_*
-    - tetgen
-    - fftw
     - libboost-headers
     - eigen
     - voro
-    - cgal =5.6.1
-    - cgal-cpp =5.6.1
+    - cgal
+    - cgal-cpp
     - libaec
     - numpy
     - openssl
@@ -70,9 +65,9 @@ requirements:
   run:
     - python
     - setuptools
+    - numpy
     - h5py
     - gitpython
-    - jupyter
     - jupyterlab
     - jupyterlab-h5web
     - nodejs
@@ -89,14 +84,27 @@ requirements:
 
 test:
   imports:
+    # relevant for pure python tools
+    - paraprobe_utils
     - paraprobe_parmsetup
+    - paraprobe_reporter
     - paraprobe_transcoder
-  #commands:
+    - paraprobe_clusterer
+    # relevant for pure c/c++ tools
+    - paraprobe_ranger
+    - paraprobe_selector
+    - paraprobe_surfacer
+    - paraprobe_distancer
+    - paraprobe_tessellator
+    - paraprobe_spatstat
+    - paraprobe_nanochem
+    - paraprobe_intersector
+  # commands:
   #  - paraprobe_ranger 636502001 PARAPROBE.Ranger.Config.SimID.636502001.nxs
 
 about:
   home: https://gitlab.com/paraprobe/paraprobe-toolbox
-  summary: 'Paraprobe Tools'
+  summary: 'paraprobe-toolbox'
   license: GPL-3.0-only
   license_family: GPL
   license_file:
