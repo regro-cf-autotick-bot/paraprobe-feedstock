@@ -1,5 +1,5 @@
 {% set version = "v0.5" %}
-{% set build = 2 %}
+{% set build = 3 %}
 
 package:
   name: paraprobe
@@ -59,7 +59,7 @@ requirements:
     - tetgen
     - fftw
     - libboost-headers
-    - eigen 
+    - eigen
     - voro
     - cgal =5.6.1
     - cgal-cpp =5.6.1
@@ -70,16 +70,23 @@ requirements:
   run:
     - python
     - setuptools
-    - h5py 
+    - h5py
     - gitpython
-    - pandas
-    - ifes-apt-tc-data-modeling
+    - jupyter
+    - jupyterlab
+    - jupyterlab-h5web
+    - nodejs
     - scikit-learn
+    - pandas
     - ase
-    - punx
-    - nexpy
-    - silx
+    - radioactivedecay
+    - ifes-apt-tc-data-modeling
+    - hdbscan
+    - sphinx
     - {{ pin_compatible('numpy') }}
+
+# pip install ecdf pytictoc ifes-apt-tc-data-modeling>=0.2.1 python-docs-theme xmltodict odfpy pylint
+
 test:
   imports:
     - paraprobe_parmsetup
