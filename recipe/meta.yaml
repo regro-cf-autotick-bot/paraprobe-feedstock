@@ -1,5 +1,5 @@
 {% set version = "v0.5" %}
-{% set build = 3 %}
+{% set build = 1 %}
 
 package:
   name: paraprobe
@@ -99,8 +99,15 @@ test:
     - paraprobe_spatstat
     - paraprobe_nanochem
     - paraprobe_intersector
-  # commands:
-  #  - paraprobe_ranger 636502001 PARAPROBE.Ranger.Config.SimID.636502001.nxs
+  commands:
+    - paraprobe_ranger --help
+    - paraprobe_selector --help
+    - paraprobe_surfacer --help
+    - paraprobe_distancer --help
+    - paraprobe_tessellator --help
+    - paraprobe_spatstat --help
+    - paraprobe_nanochem --help
+    - paraprobe_intersector --help
 
 about:
   home: https://gitlab.com/paraprobe/paraprobe-toolbox
