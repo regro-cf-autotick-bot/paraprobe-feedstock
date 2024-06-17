@@ -27,7 +27,7 @@ hdf5:
 libaec:
 - '1'
 libhwloc:
-- 2.9.3
+- 2.10.0
 mpfr:
 - '4'
 mpi:
