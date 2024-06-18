@@ -18,16 +18,12 @@ cxx_compiler_version:
 - '12'
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
-fftw:
-- '3'
 gmp:
 - '6'
 hdf5:
 - 1.14.3
 libaec:
 - '1'
-libhwloc:
-- 2.10.0
 mpfr:
 - '4'
 mpi:
@@ -56,4 +52,4 @@ zip_keys:
 - - python
   - numpy
 zlib:
-- '1.2'
+- '1'
