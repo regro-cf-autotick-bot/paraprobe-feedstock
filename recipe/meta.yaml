@@ -90,15 +90,6 @@ test:
     - paraprobe_reporter
     - paraprobe_transcoder
     - paraprobe_clusterer
-    # relevant for pure c/c++ tools
-    - paraprobe_ranger
-    - paraprobe_selector
-    - paraprobe_surfacer
-    - paraprobe_distancer
-    - paraprobe_tessellator
-    - paraprobe_spatstat
-    - paraprobe_nanochem
-    - paraprobe_intersector
   commands:
     - paraprobe_ranger --help
     - paraprobe_selector --help
