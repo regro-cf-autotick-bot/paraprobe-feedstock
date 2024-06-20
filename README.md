@@ -7,7 +7,7 @@ Home: https://gitlab.com/paraprobe/paraprobe-toolbox
 
 Package license: GPL-3.0-only
 
-Summary: Paraprobe Tools
+Summary: paraprobe-toolbox
 
 Development: https://gitlab.com/paraprobe/paraprobe-toolbox
 
