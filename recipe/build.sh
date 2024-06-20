@@ -12,21 +12,11 @@ tar xvf voro++-0.4.6.tar.xz
 mv voro++-0.4.6 voro++
 
 #test python building
-mkdir ${SP_DIR}/paraprobe_utils
-cp -rf paraprobe-toolbox/code/utils/src/python/* ${SP_DIR}/paraprobe_utils
-
-mkdir ${SP_DIR}/paraprobe_parmsetup
-cp -rf paraprobe-toolbox/code/parmsetup/src/python/* ${SP_DIR}/paraprobe_parmsetup
-
-mkdir ${SP_DIR}/paraprobe_reporter
-cp -rf paraprobe-toolbox/code/reporter/src/python/* ${SP_DIR}/paraprobe_reporter
-
-mkdir ${SP_DIR}/paraprobe_transcoder
-cp -rf paraprobe-toolbox/code/transcoder/src/python/* ${SP_DIR}/paraprobe_transcoder
-
-mkdir ${SP_DIR}/paraprobe_clusterer
-cp -rf paraprobe-toolbox/code/clusterer/src/python/* ${SP_DIR}/paraprobe_clusterer
-
+PythonTools="utils parmsetup reporter transcoder clusterer"
+for toolname in $PythonTools; do
+	mkdir ${SP_DIR}/paraprobe_${toolname}
+	cp -rf paraprobe-toolbox/code/${toolname}/src/python/* ${SP_DIR}/paraprobe_${toolname}
+done
 
 cd paraprobe-toolbox
 cd code
@@ -37,7 +27,7 @@ ls
 cd utils
 export CXXFLAGS="$CXXFLAGS -DBOOST_ERROR_CODE_HEADER_ONLY"
 cp ../../../voro++/src/* src/cxx/
-cmake -D GITSHA=`git rev-parse HEAD` \
+cmake -D GITSHA="v0.5.1" \
 	  -D LOCAL_INSTALL=OFF \
 	  -D CONDA_PREFIX=${PREFIX} \
 	  -D Boost_NO_BOOST_CMAKE=ON \
@@ -50,12 +40,12 @@ mkdir compiled_code
 cp utils/CMakeFiles/utils.dir/src/cxx/* compiled_code/
 
 
-Tools="ranger selector surfacer distancer tessellator spatstat nanochem intersector"
-for toolname in $Tools; do
+CxxTools="ranger selector surfacer distancer tessellator spatstat nanochem intersector"
+for toolname in $CxxTools; do
 	ls
 	cd $toolname
 	export CXXFLAGS="$CXXFLAGS -DBOOST_ERROR_CODE_HEADER_ONLY"
-	cmake -D GITSHA=`git rev-parse HEAD` \
+	cmake -D GITSHA="v0.5.1" \
 		  -D LOCAL_INSTALL=OFF \
 		  -D CONDA_PREFIX=${PREFIX} \
 		  -D Boost_NO_BOOST_CMAKE=ON \

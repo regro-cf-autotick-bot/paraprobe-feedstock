@@ -11,7 +11,7 @@ Summary: paraprobe-toolbox
 
 Development: https://gitlab.com/paraprobe/paraprobe-toolbox
 
-Documentation: https://gitlab.com/paraprobe/paraprobe-toolbox
+Documentation: https://paraprobe-toolbox.readthedocs.io/en/main
 
 Current build status
 ====================
