@@ -1,5 +1,5 @@
 {% set version = "v0.5" %}
-{% set build = 2 %}
+{% set build = 1 %}
 
 package:
   name: paraprobe
@@ -25,9 +25,7 @@ build:
   {% endif %}
   string: "{{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}"
   ignore_run_exports_from:
-    - fftw
     - libaec
-    - libhwloc
     # need to keep voro because it's a static lib
     # that (likely) ends up in the link interface
     # - voro
@@ -53,16 +51,13 @@ requirements:
     - {{ mpi }}
     - gmp
     - mpfr
-    - libhwloc
     - hdf5
     - hdf5 * {{ mpi_prefix }}_*
-    - tetgen
-    - fftw
     - libboost-headers
-    - eigen 
+    - eigen
     - voro
-    - cgal =5.6.1
-    - cgal-cpp =5.6.1
+    - cgal
+    - cgal-cpp
     - libaec
     - numpy
     - openssl
@@ -70,26 +65,53 @@ requirements:
   run:
     - python
     - setuptools
-    - h5py 
+    - numpy
+    - h5py
     - gitpython
-    - pandas
-    - ifes-apt-tc-data-modeling
+    - jupyterlab
+    - jupyterlab-h5web
+    - nodejs
     - scikit-learn
+    - pandas
     - ase
-    - punx
-    - nexpy
-    - silx
+    - radioactivedecay
+    - ifes-apt-tc-data-modeling
+    - hdbscan
+    - sphinx
     - {{ pin_compatible('numpy') }}
+
+# pip install ecdf pytictoc ifes-apt-tc-data-modeling>=0.2.1 python-docs-theme xmltodict odfpy pylint
+
 test:
   imports:
+    # relevant for pure python tools
+    - paraprobe_utils
     - paraprobe_parmsetup
+    - paraprobe_reporter
     - paraprobe_transcoder
-  #commands:
-  #  - paraprobe_ranger 636502001 PARAPROBE.Ranger.Config.SimID.636502001.nxs
+    - paraprobe_clusterer
+    # relevant for pure c/c++ tools
+    - paraprobe_ranger
+    - paraprobe_selector
+    - paraprobe_surfacer
+    - paraprobe_distancer
+    - paraprobe_tessellator
+    - paraprobe_spatstat
+    - paraprobe_nanochem
+    - paraprobe_intersector
+  commands:
+    - paraprobe_ranger --help
+    - paraprobe_selector --help
+    - paraprobe_surfacer --help
+    - paraprobe_distancer --help
+    - paraprobe_tessellator --help
+    - paraprobe_spatstat --help
+    - paraprobe_nanochem --help
+    - paraprobe_intersector --help
 
 about:
   home: https://gitlab.com/paraprobe/paraprobe-toolbox
-  summary: 'Paraprobe Tools'
+  summary: 'paraprobe-toolbox'
   license: GPL-3.0-only
   license_family: GPL
   license_file:
