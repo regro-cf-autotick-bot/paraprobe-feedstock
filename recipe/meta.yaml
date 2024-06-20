@@ -1,4 +1,4 @@
-{% set version = "v0.5" %}
+{% set version = "v0.5.1" %}
 {% set build = 1 %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://gitlab.com/paraprobe/paraprobe-toolbox/-/archive/{{ version }}/paraprobe-toolbox-{{ version }}.tar.gz
-    sha256: edce39f19715b262842e32b8ef0515c98ee432b364e629cb05eda340a35e00e0
+    sha256: 2bb28cf6e82c82202f254058eb6d55433d391cf5ecce479b5d7774e70adb7ebe
     folder: paraprobe-toolbox
     patches:
       - paraprobe.patch
@@ -78,9 +78,8 @@ requirements:
     - ifes-apt-tc-data-modeling
     - hdbscan
     - sphinx
+    - odfpy
     - {{ pin_compatible('numpy') }}
-
-# pip install ecdf pytictoc ifes-apt-tc-data-modeling>=0.2.1 python-docs-theme xmltodict odfpy pylint
 
 test:
   imports:
@@ -117,7 +116,7 @@ about:
   license_file:
     - LICENSE
     - VORO_LICENSE
-  doc_url: https://gitlab.com/paraprobe/paraprobe-toolbox
+  doc_url: https://paraprobe-toolbox.readthedocs.io/en/main
   dev_url: https://gitlab.com/paraprobe/paraprobe-toolbox
 
 extra:
